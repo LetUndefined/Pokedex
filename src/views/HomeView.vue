@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getAllPokemon } from '@/services/list.service';
+import { getAllPokemon } from '@/services/pokemon.service';
 import { onMounted, ref, type Ref } from 'vue';
 
 const pokemons: Ref<string[]> = ref([]);
