@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import router from '@/router';
 import { getAllPokemon } from '@/services/pokemon.service';
 import { onMounted, ref, type Ref } from 'vue';
 
@@ -14,15 +15,38 @@ async function loadPokemons() {
   }
 }
 
+function goToPokemon(pokemonName: string) {
+  router.push(`/pokemon/${pokemonName}`);
+}
+
 onMounted(() => {
   loadPokemons();
 });
 </script>
 <template>
-  <h1>All Pokemons</h1>
-  <ul>
-    <li v-for="(pokemon, index) in pokemons" :key="index">
-      {{ pokemon }}
-    </li>
-  </ul>
+  <div class="list-container">
+    <v-list lines="one">
+      <v-list-item
+        @click="goToPokemon(pokemon)"
+        v-for="(pokemon, index) in pokemons"
+        :key="index"
+        class="pokemon-list"
+        >{{ pokemon }}</v-list-item
+      >
+    </v-list>
+  </div>
 </template>
+
+<style scoped>
+.list-container {
+  margin-top: 2rem;
+}
+
+.v-list {
+  text-transform: capitalize;
+}
+
+.v-list-item {
+  align-self: center;
+}
+</style>

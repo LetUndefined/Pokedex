@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
+import router from '@/router';
 </script>
 <template>
   <nav>
-    <ul class="navigation-container">
-      <li>Pokédex</li>
-      <li>Home</li>
-    </ul>
+    <v-toolbar :elevation="8" title="Pokédex">
+      <v-spacer />
+      <v-btn @click="router.push({ name: 'home' })">Home</v-btn>
+    </v-toolbar>
   </nav>
   <RouterView />
 </template>
@@ -17,12 +18,7 @@ nav {
   align-items: center;
 }
 
-.navigation-container {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  list-style-type: none;
-  margin: 1rem;
-  border: 1px solid black;
+li {
+  list-style: none;
 }
 </style>
