@@ -3,3 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.list-container {
+  margin-top: 1rem;
+}
+
+.v-list {
+  text-transform: capitalize;
+}

@@ -7,6 +7,7 @@ import router from '@/router';
     <v-toolbar :elevation="8" title="Pokédex">
       <v-spacer />
       <v-btn @click="router.push({ name: 'home' })">Home</v-btn>
+      <v-btn @click="router.push({ name: 'favorites' })">Favorites</v-btn>
     </v-toolbar>
   </nav>
   <RouterView />

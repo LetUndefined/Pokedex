@@ -4,11 +4,14 @@ import { getAllPokemon } from '@/services/pokemon.service';
 import { onMounted, ref, type Ref } from 'vue';
 
 const pokemons: Ref<string[]> = ref([]);
+const currentFavorites: Ref<string[]> = ref([]);
 
 async function loadPokemons() {
   try {
     const data = await getAllPokemon();
     pokemons.value = data.results.map((pokemon) => pokemon.name);
+    const favorites = localStorage.getItem('favorites');
+    currentFavorites.value = favorites ? JSON.parse(favorites) : [];
   } catch (error) {
     console.error('Error fetching data ', error);
     throw error;
@@ -30,6 +33,7 @@ onMounted(() => {
         @click="goToPokemon(pokemon)"
         v-for="(pokemon, index) in pokemons"
         :key="index"
+        :append-icon="currentFavorites.includes(pokemon) ? 'mdi-star' : ''"
         class="pokemon-list"
         >{{ pokemon }}</v-list-item
       >
@@ -39,14 +43,6 @@ onMounted(() => {
 
 <style scoped>
 .list-container {
-  margin-top: 2rem;
-}
-
-.v-list {
-  text-transform: capitalize;
-}
-
-.v-list-item {
-  align-self: center;
+  display: flex;
 }
 </style>
