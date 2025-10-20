@@ -11,3 +11,8 @@
 .v-list {
   text-transform: capitalize;
 }
+
+.title {
+  margin: 1rem;
+  
+}

@@ -21,6 +21,11 @@ onMounted(() => {
 </script>
 
 <template>
+  <div class="favorites-container">
+    <v-list v-if="favorites.length === 0">
+      <h2 class="title">No Favorites Found!</h2>
+    </v-list>
+  </div>
   <div class="list-container">
     <v-list lines="one">
       <v-list-item
@@ -36,6 +41,19 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.favorites-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.title {
+  text-transform: uppercase;
+  border: 1px solid black;
+  padding: 1rem 2rem;
+  box-shadow: 1px 1px 1px;
+}
 .list-container {
   display: flex;
 }
